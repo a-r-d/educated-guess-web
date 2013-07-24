@@ -1,0 +1,111 @@
+!!! 5
+%hmtl
+    %head
+        %title Educated Guess
+        %link{:rel => "stylesheet", :href => "bootstrap.min.css", :type => "text/css"}
+        /%link{:rel => "stylesheet", :href => "bootstrap-responsive.min.css", :type => "text/css"}
+        %link{:rel => "stylesheet", :href => "custom.css", :type => "text/css"}
+
+        %script{:type => "text/javascript", :src=> "jquery-1.9.1.min.js"}
+        %script{:type => "text/javascript", :src=> "bootstrap.min.js"}
+        %script{:type => "text/javascript", :src=> "custom.js"}
+
+    %body
+        .container
+            .row
+                .span12
+                    %h2 
+                        Educated Guess
+                    %h4 
+                        (A targeted password dictionary generator)
+            .row
+                .span12
+                    .well 
+                        Educated Guess takes seed words and crosses them common passwords.
+                        You can use Educated Guess to perform dictionary attack pentests on 
+                        your network. Simply add some words, then pick the list you want to cross
+                        it with and the modes you want to include in the wordlist generation.
+            .row 
+                .span4
+                    %h4
+                        Pick a list(s)
+                    %table.table 
+                        %tr
+                            %th 
+                                Wordlist
+                            %th 
+                                Use it?
+                        - wordlists.each do |wordlist|
+                            %tr
+                                %td
+                                    = wordlist[:name]
+                                %td 
+                                    %input{:type=> "checkbox", :id=>"check_" + wordlist[:name]}
+                .span4
+                    %h4
+                        Choose Options
+                    %table.table
+                        %tr
+                            %td
+                                Include wordlist by itself?
+                            %td
+                                %input{:type=> "checkbox", :id=>"opt_own_wordlist"}
+                        %tr
+                            %td
+                                Include seedlist by itself?
+                            %td
+                                %input{:type=> "checkbox", :id=>"opt_own_wordlist"}
+                        %tr
+                            %td
+                                Include numbers 0-99
+                            %td
+                                %input{:type=> "checkbox", :id=>"opt_num_99"}
+                        %tr
+                            %td
+                                Include numbers 100-9999
+                            %td
+                                %input{:type=> "checkbox", :id=>"opt_num_9999"}
+                        %tr
+                            %td
+                                Seeds forward + reversed.
+                            %td
+                                %input{:type=> "checkbox", :id=>"opt_bak"}
+                        %tr
+                            %td
+                                Cross seeds + wordlist + numbers?
+                            %td
+                                %input{:type=> "checkbox", :id=>"opt_seeds_wordlist_num_cross"}
+
+                .span4
+                    %h4
+                        Enter Seeds
+                        .well
+                            %table.table#seed-list-table
+                                %tr
+                                    %th
+                                        words:
+                                %tr
+                                    %td 
+                                        exampleword 
+                                        %span 
+                                            %button.btn.btn-danger del
+
+                        %input#add-word#add_to_wordlist_field{:type=> "text", :value=>"" }
+                        %button.btn.btn-info#add_to_wordlist_field add
+
+                        %br
+
+                        %input.btn.btn-success#submit-list{:type=> "submit", :value=>"submit" }
+
+            .row 
+                .span12
+                    %ul.nav.nav-pills
+                        %li 
+                            %a{:href => "/"}
+                                Home
+                        %li 
+                            %a{:href => "http://github.com/a-r-d"} 
+                                Other Projects
+                        %li 
+                            %a{:href => "http://a-r-d.me"} 
+                                &copy;  Aaron Decker

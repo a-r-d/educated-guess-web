@@ -8,8 +8,8 @@ require_relative 'logic'
 ## Haml Options:
 #Haml::Options.defaults[:format] = :html5
 configure do
-  set :name, 'educated-guess'
-  set :haml, { :format => :html5 }
+    set :name, 'educated-guess'
+    set :haml, { :format => :html5 }
 end
 
 $wordlist_dir = Dir.pwd + "/wordlist" # (relative)

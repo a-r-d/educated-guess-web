@@ -9,7 +9,6 @@
         %script{:type => "text/javascript", :src=> "jquery-1.9.1.min.js"}
         %script{:type => "text/javascript", :src=> "bootstrap.min.js"}
         %script{:type => "text/javascript", :src=> "custom.js"}
-
     %body
         .container
             .row
@@ -34,11 +33,15 @@
                             %th 
                                 Wordlist
                             %th 
+                                Size
+                            %th 
                                 Use it?
                         - wordlists.each do |wordlist|
                             %tr
                                 %td
                                     = wordlist[:name]
+                                %td
+                                    = wordlist[:size]
                                 %td 
                                     %input{:type=> "checkbox", :id=>"check_" + wordlist[:name]}
                 .span4
@@ -92,9 +95,7 @@
 
                         %input#add-word#add_to_wordlist_field{:type=> "text", :value=>"" }
                         %button.btn.btn-info#add_to_wordlist_field add
-
                         %br
-
                         %input.btn.btn-success#submit-list{:type=> "submit", :value=>"submit" }
 
             .row 

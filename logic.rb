@@ -24,7 +24,7 @@ def getWordlist( wordlist_dir )
         end
         wordlist << {
             :name=> File.basename(the_path),
-            :size=> (File.size(the_path) / 1000)
+            :size=> File.size(the_path)
         }
     }
     return wordlist

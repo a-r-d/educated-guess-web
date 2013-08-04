@@ -33,7 +33,7 @@
               %th 
                 Wordlist
               %th 
-                Size
+                Size (bytes)
               %th 
                 Use it?
             - wordlists.each do |wordlist|
@@ -42,8 +42,8 @@
                   = wordlist[:name]
                 %td
                   = wordlist[:size]
-                %td 
-                  %input{:type=> "checkbox", :id=>"check_" + wordlist[:name]}
+                %td
+                  %input.wordlist-checkbox{:type=> "checkbox", :id=>"check_" + wordlist[:name]}
         .span4
           %h4
             Choose Options
@@ -52,17 +52,22 @@
               %td
                 Include wordlist by itself?
               %td
-                %input{:type=> "checkbox", :id=>"opt_own_wordlist"}
+                %input{:type=> "checkbox", :id=>"opt_own_wordlist", :checked=>"checked"}
             %tr
               %td
                 Include seedlist by itself?
               %td
-                %input{:type=> "checkbox", :id=>"opt_own_wordlist"}
+                %input{:type=> "checkbox", :id=>"opt_own_wordlist", :checked=>"checked"}
+            %tr
+              %td
+                Seeds + wordlist appened and prepend. 
+              %td
+                %input{:type=> "checkbox", :id=>"opt_own_wordlist", :checked=>"checked"}
             %tr
               %td
                 Include numbers 0-99
               %td
-                %input{:type=> "checkbox", :id=>"opt_num_99"}
+                %input{:type=> "checkbox", :id=>"opt_num_99", :checked=>"checked"}
             %tr
               %td
                 Include numbers 100-9999
@@ -82,21 +87,25 @@
         .span4
           %h4
             Enter Seeds
-            .well
-              %table.table#seed-list-table
-                %tr
-                  %th
-                    words:
-                %tr
-                  %td 
-                    exampleword 
-                    %span 
-                      %button.btn.btn-danger del
-
-            %input#add-word#add_to_wordlist_field{:type=> "text", :value=>"" }
-            %button.btn.btn-info#add_to_wordlist_field add
+            %pre
+              %textarea.seed-area#seed_area
+            %span#notes-seeds
+              words: 0
+            %br
+            %span#estimated_dict_size
+              Estimated dictionary size: 0 words
+            %br
+            %span#estimated_file_size
+              Estimated File size: 0 kb
             %br
             %input.btn.btn-success#submit-list{:type=> "submit", :value=>"submit" }
+
+
+      .row
+        .span12
+          .well
+            Note: any lists generated here will be available only to your browser session and only for 24 hours. After that
+            they are permanently deleted from the server.
 
       .row 
         .span12
